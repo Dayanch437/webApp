@@ -1,0 +1,80 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gyrat</title>
+    <link rel="stylesheet" href="{% static "css/style.css" %}">
+    <script src="{% static "js/js.js" %}" defer ></script>
+</head>
+<body>
+    <header class="header">
+    <div class="logo-cotainer">
+        <img src="{% static 'images/gyrat logo png.png'%}" alt="Logotip" class="logo">
+    </div>
+    <div class="search-container">
+        <form method="GET" action="">
+            <input type="text" name="search" placeholder="Gozleg..." class="search-input">
+            <button class="search-btn"><img src="{% static 'images/loupe_78956.png'%}" alt="Gozleg lupa" class="search-icon"> </button>
+        </form>
+        
+    </div>
+    <div class="burger-menu" onclick="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    
+    <nav id="nav-menu">
+        <a href='{% url 'reklama:elekrtonika' %}'>Elektronika</a>
+
+        <a href='{% url 'reklama:index' %}'>Umumy bildirişler</a>
+
+        <a href="{% url 'reklama:basgalar' %}">Başgalar</a>
+    </nav>
+    </header>
+{% block content %}
+    <section id="products" class="products">
+        <h2 class="section-title">Umumy bildirişler</h2>
+        <div class="products-container">
+        
+
+            {% for product in products %}
+            <div class="product-box">
+                <a href="{% url 'reklama:details' slug=product.slug %}">
+                <img src="{{product.surat.url}}" alt="Product 1" class="product-img">
+                </a>
+                <h3>{{product.name}}</h3>
+
+                <h1>{{product.price}} TMT</h1>
+            </div>
+
+            {% endfor %}
+
+{% endblock content %}         
+        </div>
+        
+    </section>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="{% static 'images/gyrat logo png.png'%}" alt="Logotip" class="logo">
+                   
+            </div>
+          
+              
+                <div class="contact-info">
+                    <img src="{% static 'images/imo_14110.png'%}" alt="IMO" class="contact-icon-img">
+                    <span class="phone-number">+(993) 61527304 </span>
+                </div>
+        
+        </div>
+        
+        <p>&copy; 2024 Gyrat. </p>
+      
+    </footer>
+
+</body>
+</html>

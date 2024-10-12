@@ -1,0 +1,20 @@
+
+{% load static %}
+
+{% block content %}
+<section id="products" class="products">
+    <h2 class="section-title">Elektronika</h2>
+    <div class="products-container">
+    
+   
+        <div class="product-box">
+            <img src="{{product.surat.url}}" alt="Product 1" class="product-img" width=100px>
+            <h3>{{product.name}}</h3>
+            <h2>{{product.discription}}</h2>
+
+            <h1>{{product.price}} TMT</h1>
+        </div>
+
+
+
+{% endblock content %}
